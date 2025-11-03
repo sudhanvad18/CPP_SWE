@@ -1,6 +1,7 @@
 import json
 import html
 import gradio as gr
+import os
 
 # ------------------------
 # Load data
@@ -105,4 +106,6 @@ with gr.Blocks(title="Purdue ECE Faculty Finder") as demo:
 # Launch (no footer, no “use API” links)
 # ------------------------
 if __name__ == "__main__":
-    demo.launch(show_api=False, show_footer=False)
+    port = int(os.environ.get("PORT", 10000))
+    demo.launch(server_name="0.0.0.0", server_port=port, show_api=False, show_footer=False)
+
